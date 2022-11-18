@@ -14,6 +14,11 @@ app.use(cors())
 
 app.use(bodyParser.json())
 
+app.use(passport.initialize())
+// app.use(passport.session())
+
+require("./config/passport")(passport)
+
 mongoose.connect(config.db, {useNewUrlParser: true})
 //Если подключение успешно
 mongoose.connection.on("connected", () => {
