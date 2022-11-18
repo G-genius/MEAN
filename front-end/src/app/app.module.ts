@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { RegComponent } from './reg/reg.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {FormsModule} from "@angular/forms";
+import {FlashMessagesModule} from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AuthComponent,
     DashboardComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        FlashMessagesModule.forRoot()
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
