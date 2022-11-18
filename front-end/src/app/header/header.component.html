@@ -10,8 +10,9 @@
     </ul>
 
     <div class="col-md-3 text-end">
-      <button [routerLink]="['/auth']" type="button" class="btn btn-outline-primary me-2">Войти</button>
-      <button [routerLink]="['/reg']" type="button" class="btn btn-primary">Регистрация</button>
+      <button [routerLink]="['/auth']" type="button" class="btn btn-outline-primary">Войти</button>
+      <button [routerLink]="['/reg']" type="button" class="btn btn-outline-primary">Регистрация</button>
+      <button type="button" class="btn btn-warning" (click)="logoutUser()">Выйти</button>
     </div>
   </header>
 </div>
