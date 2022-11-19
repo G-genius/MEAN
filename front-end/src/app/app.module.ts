@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthService} from "./auth.service";
 import {HttpModule} from "@angular/http"
+import {JwtModule} from '@auth0/angular-jwt'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,14 @@ import {HttpModule} from "@angular/http"
     AppRoutingModule,
     FormsModule,
     FlashMessagesModule.forRoot(),
-    HttpModule
+    HttpModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter:() => {
+          return localStorage.getItem('access_token');
+        },
+      },
+    })
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

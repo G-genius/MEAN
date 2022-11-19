@@ -12,7 +12,7 @@ export class HeaderComponent {
 
   constructor(
     private _flashMessagesService: FlashMessagesService,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) {
   }

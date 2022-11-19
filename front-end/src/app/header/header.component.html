@@ -6,13 +6,13 @@
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li><a [routerLink]="['/']"  class="nav-link px-2 link-dark">Домой</a></li>
-      <li><a [routerLink]="['/dashboard']" class="nav-link px-2 link-dark">Личный кабинет</a></li>
+      <li *ngIf="authService.isAuthenticated()"><a [routerLink]="['/dashboard']" class="nav-link px-2 link-dark">Личный кабинет</a></li>
     </ul>
 
     <div class="col-md-3 text-end">
-      <button [routerLink]="['/auth']" type="button" class="btn btn-outline-primary">Войти</button>
-      <button [routerLink]="['/reg']" type="button" class="btn btn-outline-primary">Регистрация</button>
-      <button type="button" class="btn btn-warning" (click)="logoutUser()">Выйти</button>
+      <button *ngIf="!authService.isAuthenticated()" [routerLink]="['/auth']" type="button" class="btn btn-outline-primary">Войти</button>
+      <button *ngIf="!authService.isAuthenticated()" [routerLink]="['/reg']" type="button" class="btn btn-outline-primary">Регистрация</button>
+      <button *ngIf="authService.isAuthenticated()" type="button" class="btn btn-warning" (click)="logoutUser()">Выйти</button>
     </div>
   </header>
 </div>
