@@ -44,4 +44,11 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !this.jwtHelper.isTokenExpired(this.token);
   }
+
+  createPost(post: { category: string; title: string; photo: string; text: string; author: any; date: Date; }) {
+    let headers = new Headers()
+    headers.append("Content-type", "application/json")
+    return this.http.post("http://localhost:3000/account/dashboard", post,
+      {headers: headers}).pipe(map(res => res.json()))
+  }
 }

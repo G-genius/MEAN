@@ -1,1 +1,31 @@
-<p>dashboard works!</p>
+<body class="text-center">
+<main class="form-signin w-100 m-auto">
+  <div class="container">
+
+    <form (submit)="createPost()" >
+      <h1 class="h3 mb-3 fw-normal">Создать пост</h1>
+      <label>Категория, Заголовок и Фото:</label>
+      <select [(ngModel)]="category" name="category" id="category">
+        <option value="Мир">Мир</option>
+        <option value="Технологии">Технологии</option>
+        <option value="Дезайн">Дезайн</option>
+        <option value="Культура">Культура</option>
+        <option value="Бизнес">Бизнес</option>
+        <option value="Наука">Наука</option>
+        <option value="Здоровье">Здоровье</option>
+        <option value="Стиль">Стиль</option>
+        <option value="Путешествия">Путешествия</option>
+      </select>
+      <div class="info">
+        <input [(ngModel)]="title" name="title" type="text" class="form-control mt-3" id="floatingName" placeholder="Заголовок">
+        <quill-editor class="mt-3" [(ngModel)]="photo" name="photo" placeholder="фото" [styles]="{height: 'auto'}"></quill-editor>
+        <label class="mt-3">Информация:</label>
+        <quill-editor class="mt-3" [(ngModel)]="text" name="text" placeholder="текст..." [styles]="{height: '200px'}"></quill-editor>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Создать</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</main>
