@@ -47,16 +47,16 @@ export class DashboardComponent {
       return false
     }
   console.log(post)
-    // this.authService.createPost(post).subscribe(data => {
-    //   if (!data.success) {
-    //     this._flashMessagesService.show(data.msg,
-    //       {cssClass: 'alert-danger', timeout: 3000});
-    //   } else {
-    //     this._flashMessagesService.show(data.msg,
-    //       {cssClass: 'alert-success', timeout: 3000});
-    //     this.router.navigate(['/auth'])
-    //   }
-    // })
+    this.authService.createPost(post).subscribe(data => {
+      if (!data.success) {
+        this._flashMessagesService.show(data.msg,
+          {cssClass: 'alert-danger', timeout: 3000});
+      } else {
+        this._flashMessagesService.show(data.msg,
+          {cssClass: 'alert-success', timeout: 3000});
+        this.router.navigate(['/'])
+      }
+    })
     return false
   }
 }

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router()
 const User = require("../models/user")
+const Post = require("../models/post")
 const passport = require("passport")
 const jwt = require("jsonwebtoken")
 const config = require("../config/db")
@@ -63,8 +64,29 @@ router.post("/auth", (req, res) => {
     })
 })
 
-router.get("/dashboard", passport.authenticate("jwt", {session: false}), (req, res) => {
-    res.send("Личный кабинет")
+router.post("/dashboard",  (req, res) => {
+    let newPost = new Post({
+        category: req.body.category,
+        title: req.body.title,
+        photo: req.body.photo,
+        text: req.body.text,
+        author: req.body.author,
+        date: req.body.date
+    })
+    Post.addPost(newPost, (err, post) => {
+        if (err) {
+            res.json({
+                success: false,
+                msg: "Пост не добавлен"
+            })
+        }
+        else {
+            res.json({
+                success: true,
+                msg: "Пост успешно добавлен"
+            })
+        }
+    })
 })
 
 module.exports = router
