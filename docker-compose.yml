@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./front-end
+    container_name: docker-frontend
+    command: serve -s build -l 4200
+    ports:
+      - "4200:4200"
+    restart: unless-stopped
+#    For react-app, if port 3000 and server start on port 3000
+#    stdin_open: true
+#    tty: true
+#    volumes:
+#      - ./front-end/src:/usr/src/app/src
+
+  api:
+    build: ./App
+    container_name: docker-app
+    command: npm run start
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api_db
+  api_db:
+    image: mongo:latest
+    volumes:
+      - mongodb_api:/data/db
+volumes:
+  mongodb_api:

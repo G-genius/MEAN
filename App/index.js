@@ -31,7 +31,7 @@ mongoose.connection.on("error", (err) => {
     console.log("Ошибка подключения к mongodb " + err)
 })
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log("Сервер был запущен по порту " + port)
 })
 
