@@ -55,4 +55,8 @@ export class AuthService {
   getAllPosts() {
     return this.http.get("http://localhost:3000").pipe(map(res => res.json()))
   }
+
+  getPostById({id}: { id: any }) {
+    return this.http.get(`http://localhost:3000/post/${id}`).pipe(map(res => res.json()))
+  }
 }

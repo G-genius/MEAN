@@ -7,25 +7,25 @@ import {AuthService} from "../auth.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  posts = []
+  posts: any
   category: string = ""
   title: string = ""
   photo: string = ""
   text: string = ""
   author: string = ""
   date: string = ""
+
   constructor(
     private authService: AuthService
   ) {
   }
-
   ngOnInit(): void {
     this.authService.getAllPosts().subscribe(posts =>
       this.posts = posts,
         (err) => {},
         () => {
           for (let i = 0; i < this.posts.length; i++) {
-            // this.posts[i].text = this.posts[i].text.substring(0, 250)
+            this.posts[i].text = this.posts[i].text.substring(0, 250)
           }
         }
     )

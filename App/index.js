@@ -39,4 +39,10 @@ app.get("/", (req, res) => {
     Post.find().then(posts => res.json(posts))
 })
 
+app.get('/post/:id', (req, res) => {
+    let url = req.url.split( '/' )
+    let id = url[2]
+    Post.findById(id).then( post => res.json(post))
+});
+
 app.use("/account", account)
