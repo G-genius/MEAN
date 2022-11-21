@@ -47,6 +47,7 @@ export class AuthService {
 
   createPost(post: { category: string; title: string; photo: string; text: string; author: any; date: Date; }) {
     let headers = new Headers()
+    headers.append("Authorization", localStorage.getItem('token') || "{}")
     headers.append("Content-type", "application/json")
     return this.http.post("http://localhost:3000/account/dashboard", post,
       {headers: headers}).pipe(map(res => res.json()))
@@ -61,6 +62,8 @@ export class AuthService {
   }
 
   deletePost({id}: { id: any }) {
-    return this.http.delete(`http://localhost:3000/post/${id}`).pipe(map(res => res.json()))
+    let headers = new Headers()
+    headers.append("Authorization", localStorage.getItem('token') || "{}")
+    return this.http.delete(`http://localhost:3000/post/${id}`, {headers: headers}).pipe(map(res => res.json()))
   }
 }

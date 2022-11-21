@@ -45,7 +45,7 @@ app.get('/post/:id', (req, res) => {
     Post.findById(id).then( post => res.json(post))
 });
 
-app.delete('/post/:id', (req, res) => {
+app.delete('/post/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
     let url = req.url.split( '/' )
     id = url[2]
     Post.deleteOne({_id: id}).then( () => res.json({success: true}))
