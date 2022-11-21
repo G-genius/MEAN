@@ -41,8 +41,14 @@ app.get("/", (req, res) => {
 
 app.get('/post/:id', (req, res) => {
     let url = req.url.split( '/' )
-    let id = url[2]
+    id = url[2]
     Post.findById(id).then( post => res.json(post))
+});
+
+app.delete('/post/:id', (req, res) => {
+    let url = req.url.split( '/' )
+    id = url[2]
+    Post.deleteOne({_id: id}).then( () => res.json({success: true}))
 });
 
 app.use("/account", account)

@@ -1,5 +1,18 @@
 <div *ngIf="post$ | async as post" class="container">
-  <h1>
-    {{post}}
-  </h1>
+
+  <div class="m-0 d-flex justify-content-between align-items-center">
+    <h1> {{post.title}}</h1>
+    <button *ngIf="login == post.author" class="btn btn-sm btn-danger" (click)="deletePost(post._id)">Удалить</button>
+  </div>
+  <strong class="d-inline-block mb-2 text-primary">{{post["category"]}}</strong>
+  <div class="mb-1 text-muted">
+    Автор: @{{post.author}},
+    <br/>
+    Дата: {{post["date"] | date: "short"}}
+  </div>
+  <quill-view [content]="post.photo"></quill-view>
+  <div class="mt-2 mb-3">
+    <quill-view [content]="post.text"></quill-view>
+  </div>
 </div>
+
