@@ -30,4 +30,9 @@ export class HomeComponent {
         }
     )
   }
+
+  setCategory({category}: { category: any }) {
+    this.category = category
+    console.log(this.category)
+  }
 }

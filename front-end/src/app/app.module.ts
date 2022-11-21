@@ -13,7 +13,8 @@ import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthService} from "./auth.service";
 import {HttpModule} from "@angular/http"
 import {JwtModule} from '@auth0/angular-jwt'
-import { QuillModule } from 'ngx-quill'
+import { QuillModule } from 'ngx-quill';
+import { SortingPipe } from './sorting.pipe'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { QuillModule } from 'ngx-quill'
     HeaderComponent,
     RegComponent,
     AuthComponent,
-    DashboardComponent
+    DashboardComponent,
+    SortingPipe
   ],
   imports: [
     BrowserModule,

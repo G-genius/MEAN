@@ -1,14 +1,14 @@
 <div class="nav-scroller py-1 mb-2">
   <nav class="nav d-flex justify-content-between">
-    <a class="p-2 link-secondary" href="#">Мир</a>
-    <a class="p-2 link-secondary" href="#">Технологии</a>
-    <a class="p-2 link-secondary" href="#">Дезайн</a>
-    <a class="p-2 link-secondary" href="#">Культура</a>
-    <a class="p-2 link-secondary" href="#">Бизнес</a>
-    <a class="p-2 link-secondary" href="#">Наука</a>
-    <a class="p-2 link-secondary" href="#">Здоровье</a>
-    <a class="p-2 link-secondary" href="#">Стиль</a>
-    <a class="p-2 link-secondary" href="#">Путешествия</a>
+    <a class="p-2 link-secondary" (click)="setCategory({category : 'Мир'})"> Мир</a>
+    <a class="p-2 link-secondary" (click)="setCategory({category : 'Технологии'})">Технологии</a>
+    <a class="p-2 link-secondary" (click)="setCategory({category : 'Дизайн'})">Дизайн</a>
+    <a class="p-2 link-secondary" (click)="setCategory({category : 'Культура'})">Культура</a>
+    <a class="p-2 link-secondary" (click)="setCategory({category : 'Бизнес'})">Бизнес</a>
+    <a class="p-2 link-secondary" (click)="setCategory({category : 'Наука'})">Наука</a>
+    <a class="p-2 link-secondary" (click)="setCategory({category : 'Здоровье'})">Здоровье</a>
+    <a class="p-2 link-secondary" (click)="setCategory({category : 'Стиль'})">Стиль</a>
+    <a class="p-2 link-secondary" (click)="setCategory({category : 'Путешествия'})">Путешествия</a>
   </nav>
 </div>
 
@@ -22,7 +22,7 @@
   </div>
 
   <div class="row mb-2">
-    <div *ngFor="let post of posts" class="col-md-6">
+    <div *ngFor="let post of posts | sorting: category" class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary">{{post["category"]}}</strong>
