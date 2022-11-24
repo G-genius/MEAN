@@ -18,13 +18,13 @@ export class AuthService {
   registerUser(user: { name: String; login: String; email: String; password: String; }) {
     let headers = new Headers()
       headers.append("Content-type", "application/json")
-      return this.http.post("http://127.0.0.1:3000/account/reg", user,
+      return this.http.post("http://127.0.0.1:1337/account/reg", user,
         {headers: headers}).pipe(map(res => res.json()))
   }
   authUser(user: { login: String; password: String; }) {
     let headers = new Headers()
     headers.append("Content-type", "application/json")
-    return this.http.post("http://127.0.0.1:3000/account/auth", user,
+    return this.http.post("http://127.0.0.1:1337/account/auth", user,
       {headers: headers}).pipe(map(res => res.json()))
   }
   storeUser({token, user}: { token: any, user: any }) {
@@ -49,21 +49,21 @@ export class AuthService {
     let headers = new Headers()
     headers.append("Authorization", localStorage.getItem('token') || "{}")
     headers.append("Content-type", "application/json")
-    return this.http.post("http://127.0.0.1:3000/account/dashboard", post,
+    return this.http.post("http://127.0.0.1:1337/account/dashboard", post,
       {headers: headers}).pipe(map(res => res.json()))
   }
 
   getAllPosts() {
-    return this.http.get("http://127.0.0.1:3000").pipe(map(res => res.json()))
+    return this.http.get("http://127.0.0.1:1337").pipe(map(res => res.json()))
   }
 
   getPostById({id}: { id: any }) {
-    return this.http.get(`http://127.0.0.1:3000/post/${id}`).pipe(map(res => res.json()))
+    return this.http.get(`http://127.0.0.1:1337/post/${id}`).pipe(map(res => res.json()))
   }
 
   deletePost({id}: { id: any }) {
     let headers = new Headers()
     headers.append("Authorization", localStorage.getItem('token') || "{}")
-    return this.http.delete(`http://127.0.0.1:3000/post/${id}`, {headers: headers}).pipe(map(res => res.json()))
+    return this.http.delete(`http://127.0.0.1:1337/post/${id}`, {headers: headers}).pipe(map(res => res.json()))
   }
 }

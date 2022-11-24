@@ -9,7 +9,7 @@ const account = require("./routes/account")
 const Post = require("./models/post")
 
 const app = express()
-const port = 3000
+const port = 1337
 
 app.use(cors())
 
