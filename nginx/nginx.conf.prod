@@ -1,0 +1,9 @@
+server {
+  listen 80;
+
+  server_name angular-app.com;
+
+  location / {
+    proxy_pass http://front-end:4200;
+  }
+}

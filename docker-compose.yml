@@ -4,7 +4,7 @@ services:
   front-end:
     build: ./front-end
     container_name: docker-frontend
-    command: ng serve --host 0.0.0.0 --port 4200
+    command: ng serve --host 0.0.0.0 --disable-host-check true
     ports:
       - "4200:4200"
     restart: unless-stopped
@@ -23,5 +23,14 @@ services:
     image: mongo:latest
     volumes:
       - mongodb_api:/data/db
+  nginx:
+    image: nginx:stable-alpine
+    container_name: docker-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf.prod:/etc/nginx/conf.d/nginx.conf
+    depends_on:
+      - front-end
 volumes:
   mongodb_api:
