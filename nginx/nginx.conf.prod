@@ -6,4 +6,9 @@ server {
   location / {
     proxy_pass http://front-end:4200;
   }
+
+  location /api {
+      proxy_pass http://api:1337;
+      rewrite ^/app/(.*) /$1 break;
+  }
 }
